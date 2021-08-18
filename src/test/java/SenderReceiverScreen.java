@@ -22,7 +22,7 @@ public class SenderReceiverScreen extends BasePage{
 
     }
     public void pressRadioForSomeoneElse(){
-        clickElement(By.xpath("//*[@id=\"ember4724\"]/span"));
+        clickElement(By.xpath("//span[ text()='למישהו אחר']"));
     }
     public void enterReceiverName(){
         String receiverName = "Biden";
