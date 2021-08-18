@@ -22,25 +22,25 @@ public class MainTest {
         System.setProperty("webdriver.chrome.driver", "C:\\Users\\ereuv\\Downloads\\chromedriver_win32 (4)\\chromedriver.exe");
         driver = DriverSingleton.getDriverInstance();
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-       driver.get("https://buyme.co.il/");
+        driver.get("https://buyme.co.il/");
     }
 
     @Test
     public void assertAllFields() {
 //        wait.until(ExpectedConditions.elementToBeClickable(By.xpath())).click();
-IntroRegistrationScreen step1=new IntroRegistrationScreen();
+        IntroRegistrationScreen step1 = new IntroRegistrationScreen();
         step1.login();
 
         wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@placeholder='שם פרטי']"))).getText();
         Assert.assertEquals(Constants.NAME, driver.findElement(By.xpath("//*[@placeholder='שם פרטי']")).getText());
         Assert.assertEquals(Constants.EMAIL, driver.findElement(By.xpath("//*[@id=\"ember1640\"]")).getText());
         Assert.assertEquals(Constants.PASSWORD, driver.findElement(By.xpath("//*[@id=\"valPass\"]")).getText());
-        Assert.assertEquals(Constants.PASSWORD, driver.findElement(By.xpath("//*[@id=\"ember1646\"]") ).getText());
+        Assert.assertEquals(Constants.PASSWORD, driver.findElement(By.xpath("//*[@id=\"ember1646\"]")).getText());
 
         /**
          * Call Set Search For Gift options.
          */
-        HomeScreen step2=new HomeScreen();
+        HomeScreen step2 = new HomeScreen();
         step2.setSearchForGift();
     }
 
@@ -49,7 +49,7 @@ IntroRegistrationScreen step1=new IntroRegistrationScreen();
      */
     @Test
 
-    public void assertURLTest(){
+    public void assertURLTest() {
         String buyMeURL = "https://buyme.co.il/";
         Assert.assertEquals(chromeDriver.getCurrentUrl(), buyMeURL);
 
@@ -58,13 +58,13 @@ IntroRegistrationScreen step1=new IntroRegistrationScreen();
     /**
      * Assert tests for Step 4.
      */
-  @Test
-    public void assertSenderReceiverNames(){
-        SenderReceiverScreen step4= new SenderReceiverScreen();
+    @Test
+    public void assertSenderReceiverNames() {
+        SenderReceiverScreen step4 = new SenderReceiverScreen();
         step4.giftForSomeoneElse();
         Assert.assertEquals(Constants.NAME, driver.findElement(By.xpath("//*[@id=\"ember2187\"]")).getText());
         Assert.assertEquals(Constants.receiverName, driver.findElement(By.name("מי הזוכה המאושר? יש להשלים את שם המקבל/ת")).getText());
-  }
+    }
 
 
 }
