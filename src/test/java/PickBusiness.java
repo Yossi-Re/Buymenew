@@ -1,4 +1,6 @@
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebElement;
 
 public class PickBusiness extends BasePage {
 
@@ -9,15 +11,17 @@ public class PickBusiness extends BasePage {
 
         pickBusiness();
         enterPrice();
-        pressChoose();
+        pressEnter();
     }
 
     /**
      * Click on Chef restaurants and then click on Buyme Chef.
      */
     public void pickBusiness(){
-        clickElement(By.linkText("background-image: url(\"https://buyme.co.il/files/categoryNewPic16.jpg\""));
-        clickElement(By.xpath("//*[@id=\"ember3175\"]/div[3]"));
+//        clickElement(By.linkText("background-image: url(\"https://buyme.co.il/files/categoryNewPic16.jpg\""));
+        // 'https://buyme.co.il/supplier/1933847?budget=5&category=16&query=&region=13'
+        //clickElement(By.xpath("//span[@text='מסעדת יאקימונו רוטשילד']"));
+        clickElement(By.xpath("//span[@url='https://buyme.co.il/supplier/1933847?budget=5&category=16&query=&region=13']"));
     }
 
     /**
@@ -26,9 +30,11 @@ public class PickBusiness extends BasePage {
 
     public void enterPrice(){
         String price = "300";
-        sendKeysToElement(By.xpath("//*[@id=\"ember4252\"]"), price);
+        sendKeysToElement(By.xpath("//input[@placeholder='הכנס סכום'"), price);
+
     }
-    public void pressChoose(){
-        clickElement(By.xpath("//*[@id=\"ember4529\"]/span"));
+    public void pressEnter(){
+
+        sendKeysToElement(By.xpath("//input[@placeholder='הכנס סכום'"), Keys.RETURN);
     }
 }

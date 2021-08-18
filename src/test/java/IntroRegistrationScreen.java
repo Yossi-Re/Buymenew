@@ -10,12 +10,14 @@ public class IntroRegistrationScreen extends BasePage {
     /**
      * Functions that this class includes: Registration, Enter name and email, Registration button in order to start working.
      */
-    public void login() {
+    public void register(){
         enterBuyMeWebSite();
         pressRegistration();
-        pressRegistration2();
         enterCredentials();
+    }
+    public void login() {
 
+        enterOnceRegistered();
 
     }
 
@@ -38,16 +40,18 @@ public class IntroRegistrationScreen extends BasePage {
     private void enterCredentials() {
 
 
-        sendKeysToElement(By.xpath("//*[text()='שם פרטי']"), Constants.NAME);
-        sendKeysToElement(By.xpath("//*[text()='מייל']"), Constants.EMAIL);
-        sendKeysToElement(By.xpath("//*[text()='סיסמה']"), Constants.PASSWORD);
-        sendKeysToElement(By.xpath("//*[text()='אימות סיסמה']"), Constants.PASSWORD);
+        sendKeysToElement(By.xpath("//*[@placeholder='שם פרטי']"), Constants.NAME);
+        sendKeysToElement(By.xpath("//*[@placeholder='מייל']"), Constants.EMAIL);
+        sendKeysToElement(By.xpath("//*[@placeholder='סיסמה']"), Constants.PASSWORD);
+        sendKeysToElement(By.xpath("//*[@placeholder='אימות סיסמה']"), Constants.PASSWORD);
     }
 
 //*[@id='ember953']/div/ul[1]/li[3]/a/span[2]
 
-    private void pressRegistration2() {
-        clickElement(By.xpath("/html/body/div[2]/div/div[1]/div/div/div[3]/div[2]/div[3]/form/button/span"));
+    private void enterOnceRegistered() {
+        clickElement(By.xpath("//span[text()='לכניסה']"));
+        //.getAttribute("gtm") ==
+        clickElement(By.xpath("//button[@gtm='כניסה ל-BUYME']"));
     }
 
 

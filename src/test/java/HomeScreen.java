@@ -20,25 +20,26 @@ public class HomeScreen extends BasePage {
 
     }
 public void pickPrice(){
-
-        clickElement(By.xpath("/html/body/div[2]/div/header/div[3]/div/form/div[1]/a/span"));
-        clickElement(By.xpath("/html/body/div[2]/div/header/div[3]/div/form/select[1]/option[6]"));
+    // /html/body/div[2]/div/header/div[3]/div/form/div[1]/a/span
+        clickElement(By.xpath("//span[text()='סכום']"));
+        clickElement(By.xpath("//li[@data-option-array-index='5']"));
 
 }
 public void pickRegion(){
-        clickElement(By.xpath("/html/body/div[2]/div/header/div[3]/div/form/div[2]/a/span"));
-        clickElement(By.xpath("/html/body/div[2]/div/header/div[3]/div/form/select[2]/option[2]"));
+        clickElement(By.xpath("//span[text()='אזור']"));
+        clickElement(By.xpath("//li[text()='ת\"א והסביבה']"));
+        //clickElement(By.xpath("/html/body/div[2]/div/header/div[3]/div/form/select[2]/option[2]"));
 }
 
     public void pickCategory() {
 
-        clickElement(By.xpath("/html/body/div[2]/div/header/div[3]/div/form/div[3]/a/span"));
-        clickElement(By.xpath("/html/body/div[2]/div/header/div[3]/div/form/select[3]/option[3]"));
+        clickElement(By.xpath("//span[text()='קטגוריה']"));
+        clickElement(By.xpath("//li[text()='גיפט קארד למסעדות שף']"));
 
     }
 
     public void pressFindMeGift() {
-        clickElement(By.xpath("/html/body/div[2]/div/header/div[3]/div/form/a"));
+        clickElement(By.xpath("//a[text()='תמצאו לי מתנה']"));
 
     }
 }

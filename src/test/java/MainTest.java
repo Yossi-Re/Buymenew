@@ -14,7 +14,7 @@ public class MainTest {
 
 
     public static WebDriver driver;
-    private WebDriver chromeDriver;
+    //private WebDriver chromeDriver;
     private static WebDriverWait wait;
 
     @BeforeClass
@@ -22,21 +22,22 @@ public class MainTest {
         System.setProperty("webdriver.chrome.driver", "C:\\Users\\ereuv\\Downloads\\chromedriver_win32 (4)\\chromedriver.exe");
         driver = DriverSingleton.getDriverInstance();
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        driver.get("https://buyme.co.il/");
+//        driver.get("https://buyme.co.il/");
     }
 
     @Test
     public void assertAllFields() {
 //        wait.until(ExpectedConditions.elementToBeClickable(By.xpath())).click();
         IntroRegistrationScreen step1 = new IntroRegistrationScreen();
+        step1.register();
+
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@placeholder='שם פרטי']")));
+        Assert.assertEquals(Constants.NAME, driver.findElement(By.xpath("//*[@placeholder='שם פרטי']")).getAttribute("value"));
+        Assert.assertEquals(Constants.EMAIL, driver.findElement(By.xpath("//*[@placeholder='מייל']")).getAttribute("value"));
+        Assert.assertEquals(Constants.PASSWORD, driver.findElement(By.xpath("//*[@placeholder='סיסמה']")).getAttribute("value"));
+        Assert.assertEquals(Constants.PASSWORD, driver.findElement(By.xpath("//*[@placeholder='אימות סיסמה']")).getAttribute("value"));
+
         step1.login();
-
-        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@placeholder='שם פרטי']"))).getText();
-        Assert.assertEquals(Constants.NAME, driver.findElement(By.xpath("//*[@placeholder='שם פרטי']")).getText());
-        Assert.assertEquals(Constants.EMAIL, driver.findElement(By.xpath("//*[@id=\"ember1640\"]")).getText());
-        Assert.assertEquals(Constants.PASSWORD, driver.findElement(By.xpath("//*[@id=\"valPass\"]")).getText());
-        Assert.assertEquals(Constants.PASSWORD, driver.findElement(By.xpath("//*[@id=\"ember1646\"]")).getText());
-
         /**
          * Call Set Search For Gift options.
          */
@@ -50,9 +51,10 @@ public class MainTest {
     @Test
 
     public void assertURLTest() {
-        String buyMeURL = "https://buyme.co.il/";
-        Assert.assertEquals(chromeDriver.getCurrentUrl(), buyMeURL);
-
+        String buyMeURL = "https://buyme.co.il/search?budget=5&category=16&region=13";
+        Assert.assertEquals(driver.getCurrentUrl(), buyMeURL);
+        PickBusiness step3 = new PickBusiness();
+        step3.setChoosingBusiness();
     }
 
     /**
@@ -60,10 +62,10 @@ public class MainTest {
      */
     @Test
     public void assertSenderReceiverNames() {
-        SenderReceiverScreen step4 = new SenderReceiverScreen();
-        step4.giftForSomeoneElse();
-        Assert.assertEquals(Constants.NAME, driver.findElement(By.xpath("//*[@id=\"ember2187\"]")).getText());
-        Assert.assertEquals(Constants.receiverName, driver.findElement(By.name("מי הזוכה המאושר? יש להשלים את שם המקבל/ת")).getText());
+        //SenderReceiverScreen step4 = new SenderReceiverScreen();
+        //step4.giftForSomeoneElse();
+        //Assert.assertEquals(Constants.NAME, driver.findElement(By.xpath("//*[@id=\"ember2187\"]")).getText());
+        //Assert.assertEquals(Constants.receiverName, driver.findElement(By.name("מי הזוכה המאושר? יש להשלים את שם המקבל/ת")).getText());
     }
 
 
