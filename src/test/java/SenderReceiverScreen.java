@@ -7,7 +7,7 @@ public class SenderReceiverScreen extends BasePage{
 
     public void giftForSomeoneElse(){
 
-        pressRadioForSomeoneElse();
+//        pressRadioForSomeoneElse();
         enterReceiverName();
 //         enterSenderName();
         pickAnEvent();
@@ -21,12 +21,13 @@ public class SenderReceiverScreen extends BasePage{
 
 
     }
-    public void pressRadioForSomeoneElse(){
-        clickElement(By.xpath("//span[ text()='למישהו אחר']"));
-    }
+//    public void pressRadioForSomeoneElse(){
+//        clickElement(By.xpath("//span[@text()='למישהו אחר']"));
+//    }
     public void enterReceiverName(){
-        String receiverName = "Biden";
-        sendKeysToElement(By.name("מי הזוכה המאושר? יש להשלים את שם המקבל/ת"), receiverName);
+
+        sendKeysToElement(By.cssSelector("input[maxlength='25']"),"Biden");
+
     }
 
     /**
@@ -36,12 +37,14 @@ public class SenderReceiverScreen extends BasePage{
 
 
     public void pickAnEvent(){
-        clickElement(By.name("לאיזה אירוע?"));
-        clickElement(By.name("יום הולדת"));
+        clickElement(By.xpath("//span[ text()='?לאיזה אירוע']"));
+        clickElement(By.xpath("//span[ text()='יום הולדת']"));
+
     }
 
     public void enterBlessing(){
-        sendKeysToElement(By.name("מזל טוב, תודה רבה או פשוט מלא אהבה? כאן כותבים מילים טובות ואיחולים שמחים"), "Happy birthday dear Jo");
+        sendKeysToElement(By.xpath("//span[ text()='מזל טוב, תודה רבה או פשוט מלא אהבה? כאן כותבים מילים טובות ואיחולים שמחים']"), "Happy birthday dear Jo");
+
     }
     public void uploadPicture(){
         clickElement(By.className("media-circle-btn ember-view bm-media-upload"));

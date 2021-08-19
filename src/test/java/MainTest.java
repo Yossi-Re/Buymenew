@@ -62,10 +62,10 @@ public class MainTest {
      */
     @Test
     public void assertSenderReceiverNames() {
-        //SenderReceiverScreen step4 = new SenderReceiverScreen();
-        //step4.giftForSomeoneElse();
-        //Assert.assertEquals(Constants.NAME, driver.findElement(By.xpath("//*[@id=\"ember2187\"]")).getText());
-        //Assert.assertEquals(Constants.receiverName, driver.findElement(By.name("מי הזוכה המאושר? יש להשלים את שם המקבל/ת")).getText());
+        SenderReceiverScreen step4 = new SenderReceiverScreen();
+        step4.giftForSomeoneElse();
+        Assert.assertEquals(Constants.NAME, driver.findElement(By.xpath("//*[@id=\"ember2187\"]")).getText());
+        Assert.assertEquals(Constants.receiverName, driver.findElement(By.name("מי הזוכה המאושר? יש להשלים את שם המקבל/ת")).getText());
     }
 
 
