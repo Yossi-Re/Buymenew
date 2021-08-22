@@ -15,14 +15,13 @@ public class BasePage {
 
         try {
 
-            element =getWebElement(locator);
+            element = getWebElement(locator);
+            if(element == null)
+                throw new NoSuchElementException(locator.toString());
             element.sendKeys(text);
         } catch (Exception e) {
             e.printStackTrace();
-            //takeElementScreenshot();
-            String timestamp = String.valueOf(System.currentTimeMillis());
             MainTest.test.info("details", MediaEntityBuilder.createScreenCaptureFromPath(takeElementScreenshot()).build());
-            //MainTest.test.info("details", MediaEntityBuilder.createScreenCaptureFromPath().build());
         }
     }
 
@@ -30,19 +29,19 @@ public class BasePage {
         return System.getProperty("user.dir") + "/" + pic;
     }
 
-    private static String takeElementScreenshot(){
+    private static String takeElementScreenshot() {
         WebDriver driver = null;
         String fileName = String.valueOf(System.currentTimeMillis());
         fileName += ".png";
         //File screenShotFile = element.getScreenshotAs(OutputType.FILE); // take the screenshot
         try {
-            driver =  DriverSingleton.getDriverInstance();
-            File screenShotFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+            driver = DriverSingleton.getDriverInstance();
+            File screenShotFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
             FileUtils.copyFile(screenShotFile, new File(fileName)); // save screenshot to disk
 
         } catch (IOException e) {
             e.printStackTrace();
-        }catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return fileName;
@@ -54,8 +53,12 @@ public class BasePage {
     }
 
     protected void clickElement(By locator) {
-
-        getWebElement(locator).click();
+        try {
+            getWebElement(locator).click();
+        } catch (Exception e) {
+            //e.printStackTrace();
+            MainTest.test.info("details", MediaEntityBuilder.createScreenCaptureFromPath(takeElementScreenshot()).build());
+        }
     }
 
     protected void navigate(String url) throws Exception {

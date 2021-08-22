@@ -88,7 +88,7 @@ public class MainTest {
         Assert.assertEquals(driver.getCurrentUrl(), buyMeURL);
         PickBusiness step3 = new PickBusiness();
         step3.setChoosingBusiness();
-        test.log(Status.FAIL, "URL is not correct " + e.getMessage());
+        test.log(Status.FAIL, "URL is not correct ");
     }
 
     /**
@@ -100,7 +100,7 @@ public class MainTest {
         step4.giftForSomeoneElse();
         Assert.assertEquals(Constants.NAME, driver.findElement(By.xpath("//*[@id=\"ember2187\"]")).getText());
         Assert.assertEquals(Constants.receiverName, driver.findElement(By.name("מי הזוכה המאושר? יש להשלים את שם המקבל/ת")).getText());
-        test.log(Status.FAIL, "Send/Received names were not completed " + e.getMessage());
+        test.log(Status.FAIL, "Send/Received names were not completed ");
     }
 
     @AfterClass
