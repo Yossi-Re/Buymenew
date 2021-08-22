@@ -26,9 +26,11 @@ public class SenderReceiverScreen extends BasePage{
 //    }
     public void enterReceiverName(){
 
-        sendKeysToElement(By.cssSelector("input[maxlength='25']"),"Biden");
+    clickElement(By.cssSelector("svg[xmlns='http://www.w3.org/2000/svg']"));
 
+        sendKeysToElement(By.xpath("//label[@id='friendName']/input"),"Biden");
     }
+
 
     /**
      * No need to enter sender's name. It is filled automatically by the system.

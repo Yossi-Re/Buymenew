@@ -10,7 +10,7 @@ public class IntroRegistrationScreen extends BasePage {
     /**
      * Functions that this class includes: Registration, Enter name and email, Registration button in order to start working.
      */
-    public void register(){
+    public void register() throws Exception {
         enterBuyMeWebSite();
         pressRegistration();
         enterCredentials();
@@ -55,7 +55,7 @@ public class IntroRegistrationScreen extends BasePage {
     }
 
 
-    private void enterBuyMeWebSite(){
+    private void enterBuyMeWebSite() throws Exception {
         navigate("https://buyme.co.il/");
     }
 }
